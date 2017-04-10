@@ -1,0 +1,6 @@
+<package>
+  <description brief="mra7a_urdf">mra7a_urdf</description>
+  <depend package="gazebo" />
+  <author>me</author>
+  <license>BSD</license>
+</package>

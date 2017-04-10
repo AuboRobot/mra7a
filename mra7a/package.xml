@@ -1,0 +1,35 @@
+<package>
+  <name>mra7a</name>
+  <version>1.0.0</version>
+  <description>Aubo's mra(module robot arm) 7 Dof</description>
+
+  <maintainer email="lmn.cnu.g@gmail.com">lmn</maintainer>
+
+  <license>BSD</license>
+
+  <author>lmn</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+
+  <run_depend>geometry_msgs</run_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>rviz</run_depend>
+  <run_depend>tf</run_depend>
+  <run_depend>urdf</run_depend>
+  <run_depend>xacro</run_depend>
+
+
+  <run_depend>moveit_ros_move_group</run_depend>
+  <run_depend>moveit_kinematics</run_depend>
+  <run_depend>moveit_planners_ompl</run_depend>
+  <run_depend>moveit_ros_visualization</run_depend>
+  <run_depend>joint_state_publisher</run_depend>
+  <run_depend>robot_state_publisher</run_depend>
+  <run_depend>xacro</run_depend>
+  <run_depend>mra7a_description</run_depend>
+
+  <export>
+    <metapackage/>
+  </export>
+</package>

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+<xacro:macro name="seven_dof_arm_material" params="prefix">
+
+<gazebo reference="base_link">
+<visual name="gazeboo_color_base_link">
+<material>
+<script>
+ <uri>file://media/materials/scripts/gazebo.material</uri>
+ <name>Gazebo/FlatBlack</name>
+</script>
+</material>
+</visual>
+</gazebo>
+
+<gazebo reference="Link1">
+<visual name="gazebo_color_Link1">
+<material>
+<script>
+<uri>file://media/materials/scripts/gazebo.material</uri>
+<name>Gazebo/Orange</name>
+</script>
+</material>
+</visual>
+</gazebo>
+
+<gazebo reference="Link2">
+<visual name="gazebo_color_Link2">
+<material>
+<script>
+<uri>file://media/materials/scripts/gazebo.material</uri>
+<name>Gazebo/Orange</name>
+</script>
+</material>
+</visual>
+</gazebo>
+
+
+  </xacro:macro>
+
+</robot>

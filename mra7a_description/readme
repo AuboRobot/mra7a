@@ -1,0 +1,8 @@
+This package is the description of the seven dof arm. 
+It includes the urdf, xacro and related setting for gazebo.
+The config folder contains some configuers for the gazebo controllers.
+the launch folder contains some lounch files for the gazebo world, controllers etc.
+
+launch steps:
+1.roslaunch seven_dof_arm_description seven_dof_arm_bringup_gazebo.launch  //launch gazebo world + spawn the robot model + launch gazebo controller.
+2.roslaunch seven_dof_arm_description seven_dof_arm_bringup_rviz.launch  //launch move_group.launch, moveit_rviz.launch and joint_state_publisher.
