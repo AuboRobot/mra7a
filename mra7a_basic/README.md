@@ -17,3 +17,13 @@ Here, We provides a simple test to control MRA7A's joint independently using a Q
 1.roscore<br>
 2.rosrun mra7a_basic joint_control<br>
 3.rosrun mra7a_basic control_panel<br>
+
+**Design ideas:**<br>
+joint_control: 
+![joint_control](/home/lmn/ros_ws/mra_ros_ws/src/mra7a/mra7a_basic/image/joint_control.png  "joint_control graph")
+
+
+
+
+
+
