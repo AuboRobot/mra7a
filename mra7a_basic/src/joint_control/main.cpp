@@ -6,7 +6,7 @@
 #include <sensor_msgs/JointState.h>
 #include <mra_core_msgs/AssemblyState.h>
 #include <mra_core_msgs/JointCommand.h>
-#include <std_msgs/Empty.h>
+#include <std_msgs/Bool.h>
 
 
 
@@ -31,9 +31,16 @@ void joint_command_callback(const mra_core_msgs::JointCommandConstPtr &msg)
     }
 }
 
-void MRA_API_INIT(const std_msgs::Empty &msg) {
-    if(userControlOnCan != NULL) {
+void MRA_API_INIT(const std_msgs::Bool &reset) {
+    if(reset.data == 1) {
         delete userControlOnCan;
+        userControlOnCan = new UserControlOnCan();
+        if(userControlOnCan->Init(DEFAULT_NODE)) {
+            mra_state.canbus_state = mra_core_msgs::AssemblyState::CANBUS_STATE_NORMAL;
+            mra_state.enabled = true;
+        } else {
+            ROS_ERROR("Can't Open the pcanusb32");
+        }
     } else {
         if(userControlOnCan->Init(DEFAULT_NODE)) {
             mra_state.canbus_state = mra_core_msgs::AssemblyState::CANBUS_STATE_NORMAL;
@@ -59,8 +66,9 @@ int main(int argc, char **argv)
     mra_state.interruptJoints.resize(jointID.size());
 
     /*MRA_API first init*/
-    std_msgs::Empty empty;
-    MRA_API_INIT(empty);
+    std_msgs::Bool reset;
+    reset.data = 0;
+    MRA_API_INIT(reset);
 
     /*sub other node's joint control command*/
     ros::Subscriber sub_joint_command = n.subscribe(JOINT_COMMAND_TOPIC, 1, &joint_command_callback);
