@@ -20,7 +20,7 @@ Here, We provides a simple test to control MRA7A's joint independently using a Q
 
 **Design ideas:**<br>
 joint_control: 
-![joint_control](/home/lmn/ros_ws/mra_ros_ws/src/mra7a/mra7a_basic/image/joint_control.png  "joint_control graph")
+![joint_control node](./image/joint_control.png  "joint_control graph")
 
 
 
