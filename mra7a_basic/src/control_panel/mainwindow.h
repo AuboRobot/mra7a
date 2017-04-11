@@ -34,6 +34,8 @@ private slots:
     void on_pbn_joint7Left_pressed();
     void on_pbn_joint7Right_pressed();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     float m_step;

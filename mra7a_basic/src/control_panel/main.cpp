@@ -8,6 +8,7 @@
 std::vector<double> joints_init;
 bool get_joints_init_position;
 extern bool start_sending_joint_command;
+
 void chatterCallback(const sensor_msgs::JointStateConstPtr &msg)
 {
     for(int i=0; i<jointID.size(); i++) {
@@ -42,8 +43,14 @@ void *thread_caller(void *arg)
     joint_command.mode = mra_core_msgs::JointCommand::POSITION_MODE;
     joint_command.names = joint_names;
 
-    ros::Subscriber sub = nh.subscribe(JOINT_STATE_TOPIC, 1, chatterCallback);
+    ros::Subscriber sub = nh.subscribe(JOINT_STATE_TOPIC, 1, &chatterCallback);
     get_joints_init_position = false;
+
+
+    while (start_sending_joint_command == false) {
+        ros::spinOnce();
+        loop_rate.sleep();
+    }
 
     while(ros::ok())
     {

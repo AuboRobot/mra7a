@@ -18,7 +18,7 @@ void chatterCallback(const mra_core_msgs::JointCommandConstPtr &msg)
             msg->command[4],msg->command[5],msg->command[6]);
 
     for(int i=0; i<jointID.size(); i++) {
-        bool isSent = userControlOnCan->setJointTagPos(jointID[i],msg->command[i]*180/M_PI);
+        bool isSent = userControlOnCan->setJointTagPos(jointID[i],msg->command[i]);
         //ROS_INFO("Sent ---- %s", isSent ? "success" : "failure");
         if (isSent==false) {
             ROS_ERROR("Sent is failure");
@@ -45,7 +45,7 @@ int main(int argc, char **argv)
 
 
     /*subscribe other node's joint control command*/
-    ros::Subscriber sub = n.subscribe(JOINT_COMMAND_TOPIC, 1, chatterCallback);
+    ros::Subscriber sub = n.subscribe(JOINT_COMMAND_TOPIC, 1, &chatterCallback);
 
     ros::Publisher joint_state_pub = n.advertise<sensor_msgs::JointState> (JOINT_STATE_TOPIC, 1000);
     ros::Publisher state_pub = n.advertise<mra_core_msgs::AssemblyState> (STATE_TOPIC, 1);

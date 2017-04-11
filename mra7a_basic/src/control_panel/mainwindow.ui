@@ -34,7 +34,7 @@
       <rect>
        <x>200</x>
        <y>240</y>
-       <width>141</width>
+       <width>191</width>
        <height>26</height>
       </rect>
      </property>
@@ -96,7 +96,7 @@ border-radius: 4px;</string>
       <rect>
        <x>200</x>
        <y>120</y>
-       <width>141</width>
+       <width>191</width>
        <height>26</height>
       </rect>
      </property>
@@ -189,7 +189,7 @@ border-radius: 4px;</string>
       <rect>
        <x>200</x>
        <y>160</y>
-       <width>141</width>
+       <width>191</width>
        <height>26</height>
       </rect>
      </property>
@@ -218,7 +218,7 @@ color: white;</string>
     <widget class="QPushButton" name="pbn_joint4Right">
      <property name="geometry">
       <rect>
-       <x>340</x>
+       <x>390</x>
        <y>198</y>
        <width>60</width>
        <height>30</height>
@@ -249,7 +249,7 @@ border-radius: 4px;</string>
     <widget class="QPushButton" name="pbn_joint1Right">
      <property name="geometry">
       <rect>
-       <x>340</x>
+       <x>390</x>
        <y>78</y>
        <width>60</width>
        <height>30</height>
@@ -291,7 +291,7 @@ border-radius: 4px;</string>
       <rect>
        <x>200</x>
        <y>280</y>
-       <width>141</width>
+       <width>191</width>
        <height>26</height>
       </rect>
      </property>
@@ -320,7 +320,7 @@ color: white;</string>
     <widget class="QPushButton" name="pbn_joint6Right">
      <property name="geometry">
       <rect>
-       <x>340</x>
+       <x>390</x>
        <y>278</y>
        <width>60</width>
        <height>31</height>
@@ -384,7 +384,7 @@ border-radius: 4px;</string>
       <rect>
        <x>200</x>
        <y>200</y>
-       <width>141</width>
+       <width>191</width>
        <height>26</height>
       </rect>
      </property>
@@ -413,7 +413,7 @@ color: white;</string>
     <widget class="QPushButton" name="pbn_joint2Right">
      <property name="geometry">
       <rect>
-       <x>340</x>
+       <x>390</x>
        <y>118</y>
        <width>60</width>
        <height>30</height>
@@ -444,7 +444,7 @@ border-radius: 4px;</string>
     <widget class="QPushButton" name="pbn_joint5Right">
      <property name="geometry">
       <rect>
-       <x>340</x>
+       <x>390</x>
        <y>238</y>
        <width>60</width>
        <height>30</height>
@@ -517,7 +517,7 @@ border-radius: 4px;</string>
       <rect>
        <x>200</x>
        <y>80</y>
-       <width>141</width>
+       <width>191</width>
        <height>26</height>
       </rect>
      </property>
@@ -577,7 +577,7 @@ border-radius: 4px;</string>
     <widget class="QPushButton" name="pbn_joint3Right">
      <property name="geometry">
       <rect>
-       <x>340</x>
+       <x>390</x>
        <y>158</y>
        <width>60</width>
        <height>30</height>
@@ -747,7 +747,7 @@ border-radius: 4px;</string>
     <widget class="QPushButton" name="pbn_joint7Right">
      <property name="geometry">
       <rect>
-       <x>340</x>
+       <x>390</x>
        <y>318</y>
        <width>60</width>
        <height>31</height>
@@ -798,7 +798,7 @@ border-radius: 4px;</string>
       <rect>
        <x>200</x>
        <y>320</y>
-       <width>141</width>
+       <width>191</width>
        <height>26</height>
       </rect>
      </property>
@@ -824,6 +824,19 @@ color: white;</string>
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>430</y>
+      <width>169</width>
+      <height>43</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Set Zero</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">

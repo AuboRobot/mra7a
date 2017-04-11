@@ -12,8 +12,8 @@ public:
     bool Close(const char* deviceName);
 
     bool updateJointCurPos(uint32_t theID);
-    float readJointCurPos(uint32_t theID);
-    bool setJointTagPos(uint32_t theID, float angle);
+    float readJointCurPos(uint32_t theID, int cmd = JOINT_RADIAN);
+    bool setJointTagPos(uint32_t theID, float angle, int cmd = JOINT_RADIAN);
     bool setJointAutoUpdateCurPos(uint32_t theID, bool enabled);
 
     bool updateJointCurSpd(uint32_t theID);

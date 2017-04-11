@@ -11,12 +11,15 @@ void delaymsec(int msec)
 
     while( QTime::currentTime() < dieTime )
 
-    QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }
 
 std::vector<double> joints;
 extern std::vector<double> joints_init;
 extern bool get_joints_init_position;
+bool start_sending_joint_command;
+
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
@@ -24,6 +27,8 @@ MainWindow::MainWindow(QWidget *parent) :
     m_speed(50.0)
 {
     ui->setupUi(this);
+
+    start_sending_joint_command = false;
 
     joints.resize(jointID.size());
     while(get_joints_init_position == false) {
@@ -37,6 +42,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->lb_joint5->setText(QString::number(joints[4]*180.0/M_PI, 'f', 6));
     ui->lb_joint6->setText(QString::number(joints[5]*180.0/M_PI, 'f', 6));
     ui->lb_joint7->setText(QString::number(joints[6]*180.0/M_PI, 'f', 6));
+
+    start_sending_joint_command = true;
 
 }
 
@@ -168,4 +175,18 @@ void MainWindow::on_pbn_joint7Right_pressed()
             joints[6] + m_step * m_speed/100;
 
     ui->lb_joint7->setText(QString::number(joints[6]*180.0/M_PI, 'f', 6));
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    for (int i=0; i<joints.size(); i++) {
+        joints[i] = 0.0;
+    }
+    ui->lb_joint1->setText(QString::number(joints[0], 'f', 6));
+    ui->lb_joint2->setText(QString::number(joints[1], 'f', 6));
+    ui->lb_joint3->setText(QString::number(joints[2], 'f', 6));
+    ui->lb_joint4->setText(QString::number(joints[3], 'f', 6));
+    ui->lb_joint5->setText(QString::number(joints[4], 'f', 6));
+    ui->lb_joint6->setText(QString::number(joints[5], 'f', 6));
+    ui->lb_joint7->setText(QString::number(joints[6], 'f', 6));
 }

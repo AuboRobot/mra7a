@@ -16,12 +16,20 @@ find_path(libMRA_API_INCLUDE_DIR
 
 set(libMRA_API_INCLUDE_DIRS ${libMRA_API_INCLUDE_DIR})
 
-find_library(libMRA_API_LIB
-	NAMES CANAPI
-	PATHS /usr/lib/MRA_API
-	      /usr/local/lib/MRA_API
- 	      ${PROJECT_SOURCE_DIR}/lib/MRA_API
-)
+if(${LONG_BIT} STREQUAL "32")
+        message(STATUS "System LONG_BIT is setted to 32")
+	find_library(libMRA_API_LIB
+		NAMES CANAPI
+		PATHS ${PROJECT_SOURCE_DIR}/lib/MRA_API32
+	)
+elseif(${LONG_BIT} STREQUAL "32")
+        message(STATUS "System LONG_BIT is setted to 64")
+	find_library(libMRA_API_LIB
+		NAMES CANAPI
+		PATHS ${PROJECT_SOURCE_DIR}/lib/MRA_API64
+	)
+endif(${LONG_BIT} STREQUAL "32")
+	
 
 set(libMRA_API_LIBS ${libMRA_API_LIB})
 

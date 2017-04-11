@@ -269,7 +269,7 @@ public:
     /// @brief Obtain the current position.
     /// @param cmd JOINT_ANGLE or JOINT_RADIAN
     /// @return float position
-    float getCurPos(int cmd = JOINT_ANGLE);
+    float getCurPos(int cmd);
 
     /// @brief Set the target Open PWM of joint.
     /// @param pwm Motor PWM (Unit: %)
@@ -314,7 +314,7 @@ public:
     /// @param angle position
     /// @param cmd JOINT_ANGLE or JOINT_RADIAN
     /// @return bool Indication of successful
-    bool setTagPos(float angle, int cmd = JOINT_ANGLE);
+    bool setTagPos(float angle, int cmd);
 
     /// @brief Update the target position of joint.
     /// @return bool Indication of successful
@@ -323,7 +323,7 @@ public:
     /// @brief Obtain the target position.
     /// @param cmd JOINT_ANGLE or JOINT_RADIAN
     /// @return float position
-    float getTagPos(int cmd = JOINT_ANGLE);
+    float getTagPos(int cmd);
 
     /// @brief Update the gear radio type.
     /// @return bool Indication of successful

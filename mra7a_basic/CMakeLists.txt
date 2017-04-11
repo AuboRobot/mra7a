@@ -1,6 +1,12 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(mra7a_basic)
 
+
+#Set System Digits, default 32
+#You can lookup the parameter by runing "getconf LONG_BIT" in the terminal
+set(LONG_BIT "32")
+
+#support C++11
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}  -std=c++0x")
 
 ## Find catkin macros and libraries
