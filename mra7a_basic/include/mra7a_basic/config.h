@@ -12,9 +12,9 @@ const std::vector<std::string> joint_names{"Joint1","Joint2","Joint3","Joint4","
 #define CONTROL_RATE 100 //100HZ
 
 /*Topic name definition*/
-#define JOINT_STATE_TOPIC "/mra/joint_states"  //-->pub
+#define JOINT_STATE_TOPIC "/mra/joint_states"  //-->pub joint state
 #define STATE_TOPIC "/mra/state"               //Robot State Related-->pub
-#define JOINT_COMMAND_TOPIC "joint_command"    //-->sub
-
+#define JOINT_COMMAND_TOPIC "joint_command"    //-->sub joint control command
+#define RESET_MRA_API_TOPIC "reset_MRA_API"    //-->sub, When canbus interrupts, we need to reset MRA_API after reconnecting the usb-can.
 
 #endif
