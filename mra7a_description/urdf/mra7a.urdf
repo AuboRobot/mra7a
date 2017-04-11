@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <robot
-       name="seven_dof_arm" >
+       name="mra7a" >
   <link name="world"/>
 
   <!-- base_link -->
