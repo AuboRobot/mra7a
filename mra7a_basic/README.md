@@ -20,8 +20,8 @@ Here, We provides a simple test to control MRA7A's joint independently using a Q
 
 **Design ideas:**<br>
 joint_control: <br>
-It's node graph as follow:
-<img src="./image/joint_control.png" width=400 height=100 />
+It's node graph as follow: <br>
+<img src="./image/joint_control.png" width=400 height=100 /> <br>
 It subscribe the "/mra/joint_command" topic to contorl the MRA's joint position, velocity, or effort, and the "/mra/reset_MRA_API" topic to reinit MRA_API if canbus interrupt. Besides, It publishes the joint_states and mra_state msgs at 100 hz frequency.
 
 
