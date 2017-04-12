@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(mra7a_basic)
 
-
+#### Now,FindMRA_API.cmake can automatically judge system digets by camke parameter "CMAKE_SIZEOF_VOID_P" ###
 #Set System Digits, default 32
 #You can lookup the parameter by runing "getconf LONG_BIT" in the terminal
-set(LONG_BIT "32")
+#set(LONG_BIT "32")
 
 #support C++11
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}  -std=c++0x")

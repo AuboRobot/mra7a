@@ -16,19 +16,36 @@ find_path(libMRA_API_INCLUDE_DIR
 
 set(libMRA_API_INCLUDE_DIRS ${libMRA_API_INCLUDE_DIR})
 
-if(${LONG_BIT} STREQUAL "32")
-        message(STATUS "System LONG_BIT is setted to 32")
+
+#Methord 1 : Automatically judge system digets by camke parameter "CMAKE_SIZEOF_VOID_P"
+if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+        message(STATUS "System LONG_BIT is 32")
 	find_library(libMRA_API_LIB
 		NAMES CANAPI
 		PATHS ${PROJECT_SOURCE_DIR}/lib/MRA_API32
 	)
-elseif(${LONG_BIT} STREQUAL "32")
-        message(STATUS "System LONG_BIT is setted to 64")
+else()
+        message(STATUS "System LONG_BIT is 64")
 	find_library(libMRA_API_LIB
 		NAMES CANAPI
 		PATHS ${PROJECT_SOURCE_DIR}/lib/MRA_API64
 	)
-endif(${LONG_BIT} STREQUAL "32")
+endif()
+
+#Methord 2: user set the LONG_BIT parameter by hand in top CMakelist.txt
+#if(${LONG_BIT} STREQUAL "32")
+#        message(STATUS "System LONG_BIT is setted to 32")
+#	find_library(libMRA_API_LIB
+#		NAMES CANAPI
+#		PATHS ${PROJECT_SOURCE_DIR}/lib/MRA_API32
+#	)
+#else()
+#        message(STATUS "System LONG_BIT is setted to 64")
+#	find_library(libMRA_API_LIB
+#		NAMES CANAPI
+#		PATHS ${PROJECT_SOURCE_DIR}/lib/MRA_API64
+#	)
+#endif()
 	
 
 set(libMRA_API_LIBS ${libMRA_API_LIB})
