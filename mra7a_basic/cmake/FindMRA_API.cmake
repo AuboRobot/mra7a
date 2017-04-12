@@ -16,19 +16,19 @@ find_path(libMRA_API_INCLUDE_DIR
 
 set(libMRA_API_INCLUDE_DIRS ${libMRA_API_INCLUDE_DIR})
 
-
+message(STATUS ${CMAKE_SYSTEM_PROCESSOR} "---" ${CMAKE_SIZEOF_VOID_P})
 #Methord 1 : Automatically judge system digets by camke parameter "CMAKE_SIZEOF_VOID_P"
 if(CMAKE_SIZEOF_VOID_P EQUAL 8)
-        message(STATUS "System LONG_BIT is 32")
-	find_library(libMRA_API_LIB
-		NAMES CANAPI
-		PATHS ${PROJECT_SOURCE_DIR}/lib/MRA_API32
-	)
-else()
         message(STATUS "System LONG_BIT is 64")
 	find_library(libMRA_API_LIB
 		NAMES CANAPI
 		PATHS ${PROJECT_SOURCE_DIR}/lib/MRA_API64
+	)
+else()
+        message(STATUS "System LONG_BIT is 32")
+	find_library(libMRA_API_LIB
+		NAMES CANAPI
+		PATHS ${PROJECT_SOURCE_DIR}/lib/MRA_API32
 	)
 endif()
 
