@@ -33,21 +33,16 @@ void joint_command_callback(const mra_core_msgs::JointCommandConstPtr &msg)
 
 void MRA_API_INIT(const std_msgs::Bool &reset) {
     if(reset.data == 1) {
-        delete userControlOnCan;
         userControlOnCan = new UserControlOnCan();
-        if(userControlOnCan->Init(DEFAULT_NODE)) {
-            mra_state.canbus_state = mra_core_msgs::AssemblyState::CANBUS_STATE_NORMAL;
-            mra_state.enabled = true;
-        } else {
-            ROS_ERROR("Can't Open the pcanusb32");
+    }
+    if(userControlOnCan->Init(DEFAULT_NODE)) {
+        mra_state.canbus_state = mra_core_msgs::AssemblyState::CANBUS_STATE_NORMAL;
+        mra_state.enabled = true;
+        for(int i=0; i<jointID.size(); i++) {
+            userControlOnCan->setJointAutoUpdateCurPos(jointID[i],true);
         }
     } else {
-        if(userControlOnCan->Init(DEFAULT_NODE)) {
-            mra_state.canbus_state = mra_core_msgs::AssemblyState::CANBUS_STATE_NORMAL;
-            mra_state.enabled = true;
-        } else {
-            ROS_ERROR("Can't Open the pcanusb32");
-        }
+        ROS_ERROR("Can't Open the pcanusb32");
     }
 }
 
@@ -87,26 +82,28 @@ int main(int argc, char **argv)
     joint_state.name.resize(jointID.size());
     joint_state.name = joint_names;
 
-    while (ros::ok() && mra_state.canbus_state==mra_core_msgs::AssemblyState::CANBUS_STATE_NORMAL) {
+    while (ros::ok()) {
 
-        /*get joint states and publish it*/
-        for(int i=0; i<jointID.size(); i++) {
-            joint_state.position[i] = userControlOnCan->readJointCurPos(jointID[i]);
-        }
-        for(int i=0; i<jointID.size(); i++) {
-            joint_state.velocity[i] = userControlOnCan->readJointCurSpd(jointID[i]);
-        }
-        for(int i=0; i<jointID.size(); i++) {
-            joint_state.effort[i] = userControlOnCan->readJointCurI(jointID[i]);
-        }
-        joint_state_pub.publish(joint_state);
+        if(mra_state.canbus_state==mra_core_msgs::AssemblyState::CANBUS_STATE_NORMAL) {
+            /*get joint states and publish it*/
+            for(int i=0; i<jointID.size(); i++) {
+                joint_state.position[i] = userControlOnCan->readJointCurPos(jointID[i]);
+            }
+            for(int i=0; i<jointID.size(); i++) {
+                joint_state.velocity[i] = userControlOnCan->readJointCurSpd(jointID[i]);
+            }
+            for(int i=0; i<jointID.size(); i++) {
+                joint_state.effort[i] = userControlOnCan->readJointCurI(jointID[i]);
+            }
+            joint_state_pub.publish(joint_state);
 
-        /*pub mra_state*/
-        for(int i=0; i<jointID.size(); i++) {
-            //If any joint position>0.01 radio, the mra's joints are not in home position.Set ready = false.
-            joint_state.position[i] > 0.01 ? mra_state.ready=false : mra_state.ready=true;
+            /*pub mra_state*/
+            for(int i=0; i<jointID.size(); i++) {
+                //If any joint position>0.01 radio, the mra's joints are not in home position.Set ready = false.
+                joint_state.position[i] > 0.01 ? mra_state.ready=false : mra_state.ready=true;
+            }
+            state_pub.publish(mra_state);
         }
-        state_pub.publish(mra_state);
 
         /*loop_rate default 100HZ*/
         loop_rate.sleep();
