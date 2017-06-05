@@ -50,6 +50,15 @@
         <joint name="Joint6" value="0.785" />
         <joint name="Joint7" value="0.785" />
     </group_state>
+    <group_state name="packaging_pose" group="arm">
+        <joint name="Joint1" value="0" />
+        <joint name="Joint2" value="1.57" />
+        <joint name="Joint3" value="0" />
+        <joint name="Joint4" value="1.4" />
+        <joint name="Joint5" value="0" />
+        <joint name="Joint6" value="-1.6" />
+        <joint name="Joint7" value="0" />
+    </group_state>
     <group_state name="home_gripper" group="gripper">
         <joint name="left_gripper_Joint" value="0" />
         <joint name="right_gripper_Joint" value="0" />
