@@ -3,3 +3,4 @@
 **modified by lmn:**<br>
 1. Add the controllers.yaml in the config folder.<br>
 2. Setup the controller manager in the "mra7a_moveit_controller_manager.launch.xml" file located in the launch folder.<br>
+3. trajectory_execution.launch.xml: param name="trajectory_execution/allowed_start_tolerance" value="0.02" <br>
