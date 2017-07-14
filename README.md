@@ -1,4 +1,4 @@
-# mra7a 
+# mra6a 
 # aubo mra(module robot arm) -- 7 Dofs
 
 ## Travis - Continuous Integration
